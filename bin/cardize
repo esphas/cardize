@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby -wKU
+STDOUT.sync = true
+
+require 'optparse'
+
+require_relative '../lib/cardize'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: cardize <command> [options]'
+
+  Cardize::CommandList.each_value do |command|
+    command.register opts
+  end
+end
